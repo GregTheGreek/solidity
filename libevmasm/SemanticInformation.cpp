@@ -116,7 +116,7 @@ std::vector<SemanticInformation::Operation> SemanticInformation::readWriteOperat
 		};
 		if (_instruction != Instruction::STATICCALL)
 			operations.emplace_back(Operation{Location::Storage, Effect::Write, {}, {}, {}});
-		operations.emplace_back(Operation{
+			operations.emplace_back(Operation{
 			Location::Memory,
 			Effect::Write,
 			paramCount - 2,

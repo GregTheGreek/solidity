@@ -141,6 +141,8 @@ GasMeter::GasConsumption GasMeter::estimateMax(AssemblyItem const& _item, bool _
 			break;
 		}
 		case Instruction::CALL:
+		case Instruction::AUTH: // TODO: Quite certain this needs to be elsewhere
+		case Instruction::AUTHCALL:
 		case Instruction::CALLCODE:
 		case Instruction::DELEGATECALL:
 		case Instruction::STATICCALL:

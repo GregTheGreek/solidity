@@ -166,6 +166,8 @@ std::map<std::string, Instruction> const solidity::evmasm::c_instructions =
 	{ "CREATE", Instruction::CREATE },
 	{ "CALL", Instruction::CALL },
 	{ "CALLCODE", Instruction::CALLCODE },
+	{ "AUTH", Instruction::AUTH},
+	{ "AUTHCALL", Instruction::AUTHCALL},
 	{ "STATICCALL", Instruction::STATICCALL },
 	{ "RETURN", Instruction::RETURN },
 	{ "DELEGATECALL", Instruction::DELEGATECALL },
@@ -315,13 +317,15 @@ static std::map<Instruction, InstructionInfo> const c_instructionInfo =
 	{ Instruction::CREATE,		{ "CREATE",			0, 3, 1, true, Tier::Special } },
 	{ Instruction::CALL,		{ "CALL",			0, 7, 1, true, Tier::Special } },
 	{ Instruction::CALLCODE,	{ "CALLCODE",		0, 7, 1, true, Tier::Special } },
+	{ Instruction::AUTH,		{ "AUTH",			0, 3, 1, true, Tier::Special } },
+	{ Instruction::AUTHCALL,	{ "AUTHCALL",		0, 8, 1, true, Tier::Special } },
 	{ Instruction::RETURN,		{ "RETURN",			0, 2, 0, true, Tier::Zero } },
-	{ Instruction::DELEGATECALL,	{ "DELEGATECALL",	0, 6, 1, true, Tier::Special } },
+	{ Instruction::DELEGATECALL,{ "DELEGATECALL",	0, 6, 1, true, Tier::Special } },
 	{ Instruction::STATICCALL,	{ "STATICCALL",		0, 6, 1, true, Tier::Special } },
 	{ Instruction::CREATE2,		{ "CREATE2",		0, 4, 1, true, Tier::Special } },
-	{ Instruction::REVERT,		{ "REVERT",		0, 2, 0, true, Tier::Zero } },
+	{ Instruction::REVERT,		{ "REVERT",			0, 2, 0, true, Tier::Zero } },
 	{ Instruction::INVALID,		{ "INVALID",		0, 0, 0, true, Tier::Zero } },
-	{ Instruction::SELFDESTRUCT,	{ "SELFDESTRUCT",		0, 1, 0, true, Tier::Special } }
+	{ Instruction::SELFDESTRUCT,{ "SELFDESTRUCT",	0, 1, 0, true, Tier::Special } }
 };
 
 InstructionInfo solidity::evmasm::instructionInfo(Instruction _inst, langutil::EVMVersion _evmVersion)
